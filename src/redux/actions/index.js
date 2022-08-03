@@ -12,7 +12,7 @@ export const ORDER_BY_TYPES = "ORDER_BY_TYPES"
 
 export const getAllPokemons = () =>  async dispatch => {
   try {
-    const rta = await fetch('http://localhost:3001/pokemons')
+    const rta = await fetch('https://pi-pokemon-api-theo.herokuapp.com/pokemons')
     const json = await rta.json()
     return dispatch({ type: GET_ALL_POKEMONS, payload: json })
   } catch (error) {
@@ -24,7 +24,7 @@ export const getAllPokemons = () =>  async dispatch => {
 
 export const getNamePokemon = (name) => async (dispatch) => {
   try {
-    const rta = await fetch(`http://localhost:3001/pokemons?name=${name}`)
+    const rta = await fetch(`https://pi-pokemon-api-theo.herokuapp.com/pokemons?name=${name}`)
     const json = await rta.json()
     return dispatch({ type: GET_NAME, payload: json })  
   } catch (error) {
@@ -35,7 +35,7 @@ export const getNamePokemon = (name) => async (dispatch) => {
 
 export const getDetail = (id) => async (dispatch) => {
   try {
-    const rta= await fetch(`http://localhost:3001/pokemons/${id}`)
+    const rta= await fetch(`https://pi-pokemon-api-theo.herokuapp.com/pokemons/${id}`)
     const json = await rta.json()
     return dispatch ({type: GET_DETAILS, payload: json})
   } catch(error){
@@ -45,7 +45,7 @@ export const getDetail = (id) => async (dispatch) => {
 
 export const postPokemon = (payload) => async (dispatch) => {
   try {
-    const rta = await axios.post('http://localhost:3001/pokemons/create',payload)
+    const rta = await axios.post('https://pi-pokemon-api-theo.herokuapp.com/pokemons',payload)
     return dispatch({type:POST_POKEMONS, payload: rta.data})
   } catch (error) {
     console.log(error)    
@@ -54,7 +54,7 @@ export const postPokemon = (payload) => async (dispatch) => {
 
 export const getTypes = () => async(dispatch) => {
   try {
-    const rta = await fetch('http://localhost:3001/types')
+    const rta = await fetch('https://pi-pokemon-api-theo.herokuapp.com/types')
     const json = await rta.json()
     return dispatch({type:GET_TYPES, payload: json})
     
@@ -83,6 +83,3 @@ export const orderByTypes = (payload) => (dispatch) => {
   console.log(payload)
   return dispatch({type: ORDER_BY_TYPES, payload})
 }
-
-
-
